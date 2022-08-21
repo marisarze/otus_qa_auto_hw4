@@ -37,13 +37,6 @@ def test_get_photo_by_album(album_id):
         "url": {'type': 'string'},
         "thumbnailUrl": {'type': 'string'}
     }
-    for entry in info:
-        v = cerberus.Validator(schema)
-        assert entry['albumId'] == album_id
-        r = session.get(entry['url'], headers=headers)
-        assert r.status_code == 200
-        r = session.get(entry['thumbnailUrl'], headers=headers)
-        assert r.status_code == 200
 
 
 @pytest.mark.parametrize('user_id', [i for i in range(10)])
